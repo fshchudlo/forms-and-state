@@ -1,0 +1,55 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/dist
+/tmp
+
+# dependencies
+/node_modules
+/bower_components
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+*.launch
+.settings/
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage/*
+/libpeerconnection.log
+npm-debug.log
+npm-debug.log.*
+debug.log
+yarn-error.log
+testem.log
+/typings
+
+# e2e
+/e2e/*.js
+/e2e/*.map
+
+#System Files
+.DS_Store
+Thumbs.db
+
+# Dist #
+/dist/
+/__build__/**
+.webpack.json
+/src/assets/bower_components/
+
+# Coverage #
+/coverage/
+
+/output/
+/compiled/
+.awcache/
+/src/app/**/*.css
+ts-node
+/**/*.ngfactory.ts
+/**/*.css.ts
+/**/*.css.shim.ts
+dll/

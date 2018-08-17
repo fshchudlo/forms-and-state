@@ -1,0 +1,56 @@
+/*variables*/
+$color-blue: #039be5;
+$color-hover-blue: #06abfc;
+$color-light-blue: #4fc3f7;
+$color-btn-primary-focus: #67cbf8;
+$color-btn-primary-active: #80d4f9;
+$color-selected: #ccedfd;
+$color-black: #212121;
+$color-gray: #eeeeee;
+$color-dark-grey: #5c707a;
+$color-text: #747679;
+$color-light-grey: #ededed;
+$color-muted-grey: #efefef;
+$color-muted: #555;
+$color-striped: #fcfcfc;
+$color-white: #fff;
+$color-border-muted: #afafaf;
+$color-red: #D22630;
+
+$font-size-default: 1rem !default;
+$font-size-lg: 1.125rem !default;
+$font-size-xl: 1.25rem !default;
+
+/*variables*/
+
+/*mixins*/
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin box-shadow($shadow) {
+    -webkit-box-shadow: $shadow;
+    box-shadow: $shadow;
+}
+
+@mixin opacity($opacity) {
+    -ms-opacity: $opacity;
+    opacity: $opacity;
+}
+
+@mixin transition($transition) {
+    -webkit-transition: $transition;
+    -moz-transition: $transition;
+    -ms-transition: $transition;
+    -o-transition: $transition;
+    transition: $transition;
+}
+@mixin user-select($select) {
+    -moz-user-select: $select;
+    -ms-user-select: $select;
+    -webkit-user-select: $select;
+    user-select: $select;
+}

@@ -1,0 +1,256 @@
+@import './shared.scss';
+
+body,
+html {
+    background: $color-light-grey;
+    color: $color-text;
+    font-size: $font-size-default;
+
+    * {
+        outline: none !important;
+    }
+}
+
+h1,
+h2 {
+    color: #049ae6;
+}
+
+h3,
+h4,
+h5,
+h6 {
+    color: $color-blue;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style: none;
+
+    &.bulleted {
+        li {
+            background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAZdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuMTJDBGvsAAAAEklEQVQYV2PwPfodjojiHP0OAERhIJH3C1fAAAAAAElFTkSuQmCC')
+                no-repeat left top;
+            background-repeat: no-repeat;
+            background-position-y: 8px;
+            padding-left: 10px;
+        }
+    }
+
+    &.agenda {
+        padding-left: 30px;
+
+        ul {
+            padding-left: 30px;
+        }
+
+        li {
+            padding-left: 0;
+        }
+        @media (max-width: 768px) {
+            padding-left: 15px;
+
+            li {
+                padding-top: 2px;
+            }
+
+            ul {
+                padding-left: 15px;
+            }
+        }
+    }
+}
+
+a {
+    color: #147391;
+}
+
+code {
+    padding: 2px;
+}
+
+section {
+    margin-top: -60px;
+    padding-top: 60px;
+
+    &:target > h3,
+    &:target > h4 {
+        text-decoration: underline;
+    }
+}
+
+aside {
+    p {
+        vertical-align: middle;
+    }
+
+    padding: 15px;
+    margin: 20px 0 20px 25px;
+    border: 1px solid $color-muted-grey;
+    border-left-width: 5px;
+    border-left-color: $color-blue;
+    background-position: 10px center;
+    background-repeat: no-repeat;
+    @media (max-width: 768px) {
+        margin-left: 0;
+    }
+}
+
+.spinner {
+    display: table;
+    width: 100%;
+    height: 100vh;
+
+    .spinner-pusher {
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+
+        .spinner-wraper {
+            vertical-align: middle;
+            width: 100px;
+            height: 100px;
+            position: relative;
+            margin: 50px auto;
+            cursor: pointer;
+            border-radius: 110px;
+            -webkit-border-radius: 110px;
+        }
+
+        .spinner-body {
+            background-color: $color-light-grey;
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            bottom: 5px;
+            z-index: 2;
+            border-radius: 110px;
+            text-align: center;
+            font-size: 10px;
+            color: $color-light-grey;
+            line-height: 90px;
+        }
+
+        .spinner-line {
+            margin: 0 auto;
+            background: $color-light-blue;
+            background: -webkit-radial-gradient(20% 20%, circle cover, $color-light-blue 0%, transparent 60%, transparent 100%);
+            background: radial-gradient(circle at 20% 20%, $color-light-blue 0%, transparent 60%, transparent 100%);
+            border-radius: 110px;
+            padding: 10px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            -webkit-animation-name: spinner-rotate;
+            -webkit-animation-duration: 1s;
+            -webkit-animation-iteration-count: infinite;
+            -webkit-animation-timing-function: linear;
+            -moz-animation-name: spinner-rotate;
+            -moz-animation-duration: 1s;
+            -moz-animation-iteration-count: infinite;
+            -moz-animation-timing-function: linear;
+            animation-name: spinner-rotate;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+    }
+}
+@-webkit-keyframes spinner-rotate {
+    from {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@-moz-keyframes spinner-rotate {
+    from {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@keyframes spinner-rotate {
+    from {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+.form {
+    margin-bottom: 15px;
+    .form-label {
+        color: $color-dark-grey;
+        display: inline-block;
+        font-size: 1rem;
+        font-weight: 500;
+        margin-bottom: 0.3em;
+        position: relative;
+        &:after {
+            background: #ffba1b;
+            content: '';
+            height: 4px;
+            position: absolute;
+            right: -8px;
+            top: 0;
+            width: 4px;
+            border-radius: 100%;
+        }
+    }
+    .form-title-primary {
+        font-size: 22px;
+        font-weight: 600;
+        line-height: 22px;
+        margin-bottom: 20px;
+    }
+    .form-section {
+        background-color: #fff;
+        display: block;
+        padding: 20px 30px 10px;
+    }
+    .custom-control {
+        padding-left: 0px;
+    }
+    .form-control,
+    .custom-control {
+        color: $color-black;
+        @include border-radius(0);
+        @include box-shadow(0 0 3px 0 $color-gray);
+        border-color: $color-gray;
+        &:focus,
+        &:hover {
+            @include box-shadow(0 0 3px 0 $color-gray);
+            border-color: $color-light-blue;
+        }
+        &.ng-dirty.ng-invalid {
+            background-color: #fdeded;
+            border-color: #d22630;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            .ng-select-container {
+                background-color: #fdeded;
+                border-color: #d22630;
+                -webkit-box-shadow: none;
+                box-shadow: none;
+            }
+        }
+    }
+}

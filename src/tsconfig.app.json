@@ -1,0 +1,14 @@
+{
+    "extends": "../tsconfig.json",
+    "compilerOptions": {
+        "outDir": "../out-tsc/app",
+        "baseUrl": "./",
+        "module": "es2015",
+        "types": ["i18next"]
+    },
+    "angularCompilerOptions": {
+        "fullTemplateTypeCheck": true,
+        "strictInjectionParameters": true
+    },
+    "exclude": ["test.ts", "**/*.spec.ts"]
+}

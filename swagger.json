@@ -1,0 +1,531 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "v1",
+        "title": "FormsAndState"
+    },
+    "host": "localhost:8081",
+    "schemes": ["http", "https"],
+    "paths": {},
+    "definitions": {
+        "LookupValue": {
+            "required": ["id", "text"],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "text": {
+                    "type": "string",
+                    "readOnly": true
+                }
+            }
+        },
+        "TestCaseState": {
+            "required": [
+                "id",
+                "orderNumber",
+                "isOtioTestCase",
+                "testCaseType",
+                "testCaseDescription",
+                "allocatedBookingNumber",
+                "allocatedTicketNumber",
+                "allocatedEMDNumber",
+                "additionalTicketNumber1",
+                "additionalTicketNumber2",
+                "additionalTicketNumber3",
+                "additionalTicket1SeatNumber",
+                "additionalTicket2SeatNumber",
+                "additionalTicket3SeatNumber",
+                "isApproved",
+                "approvalDate",
+                "rejectionDate",
+                "lastAgencyUpdateDate",
+                "hasItineraryReceipt",
+                "comments",
+                "rowVersion"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "format": "int64",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "orderNumber": {
+                    "format": "int32",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "isOtioTestCase": {
+                    "type": "boolean",
+                    "readOnly": true
+                },
+                "testCaseType": {
+                    "enum": [
+                        "RoundTripWithTwoAdultsAndCustomPaymentFormVVL",
+                        "VegetarianNutritionForOneAndEMDForAnotherPassenger",
+                        "SeparationOfPassengerToDifferentPNR",
+                        "SeparationOfPassengerWithRBDCodeAndRevalidation",
+                        "AdultPlusChildPlusInfantWithAdditionalLuggageMVL",
+                        "AdultPlusChildPlusInfantWithAdditionalLuggageMVLChildTicketReturn",
+                        "AdultPlusChildPlusInfantWithAdditionalLuggageMVLAdultServiceClassUpgrade",
+                        "AdultPlusChildPlusInfantEconomyClassSPATransfer",
+                        "AdultPlusChildPlusInfantEconomyClassSPATransferChildAndInfantTicketReturn",
+                        "OneAdultBusinessFlexTariffCodeShareMVL"
+                    ],
+                    "type": "string",
+                    "readOnly": true
+                },
+                "testCaseDescription": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "allocatedBookingNumber": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "allocatedTicketNumber": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "allocatedEMDNumber": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "additionalTicketNumber1": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "additionalTicketNumber2": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "additionalTicketNumber3": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "additionalTicket1SeatNumber": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "additionalTicket2SeatNumber": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "additionalTicket3SeatNumber": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "isApproved": {
+                    "type": "boolean",
+                    "readOnly": true
+                },
+                "approvalDate": {
+                    "format": "date-time",
+                    "type": "string",
+                    "readOnly": true
+                },
+                "rejectionDate": {
+                    "format": "date-time",
+                    "type": "string",
+                    "readOnly": true
+                },
+                "lastAgencyUpdateDate": {
+                    "format": "date-time",
+                    "type": "string",
+                    "readOnly": true
+                },
+                "hasItineraryReceipt": {
+                    "type": "boolean",
+                    "readOnly": true
+                },
+                "rowVersion": {
+                    "format": "byte",
+                    "type": "string",
+                    "readOnly": true
+                }
+            }
+        },
+        "TechnicalContactModel": {
+            "required": ["email", "firstName", "lastName", "middleName", "phone", "position", "sex"],
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "middleName": {
+                    "type": "string"
+                },
+                "phone": {
+                    "$ref": "#/definitions/PhoneModel"
+                },
+                "position": {
+                    "type": "string"
+                },
+                "sex": {
+                    "enum": ["Male", "Female"],
+                    "type": "string"
+                }
+            }
+        },
+        "PhoneModel": {
+            "required": ["country", "number"],
+            "type": "object",
+            "properties": {
+                "country": {
+                    "$ref": "#/definitions/CountryModel"
+                },
+                "number": {
+                    "type": "string"
+                }
+            }
+        },
+        "SaleTypeModel": {
+            "required": ["saleType", "subagentName", "subagentOwnershipForm", "subagentTin"],
+            "type": "object",
+            "properties": {
+                "saleType": {
+                    "enum": ["Own", "Subagent"],
+                    "type": "string"
+                },
+                "subagentName": {
+                    "type": "string"
+                },
+                "subagentOwnershipForm": {
+                    "type": "string"
+                },
+                "subagentTin": {
+                    "type": "string"
+                }
+            }
+        },
+        "WebsiteDevelopersModel": {
+            "required": ["developersName", "developmentType"],
+            "type": "object",
+            "properties": {
+                "developersName": {
+                    "type": "string"
+                },
+                "developmentType": {
+                    "enum": ["Own", "Outsourcing"],
+                    "type": "string"
+                }
+            }
+        },
+        "CountryModel": {
+            "required": ["id", "name", "phoneCode"],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "phoneCode": {
+                    "type": "string"
+                }
+            }
+        },
+        "EditMyFormModel": {
+            "required": ["id", "rowVersion", "text", "technicalContactSettings", "websiteDevelopersInfo", "saleTypeInfo", "website"],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "format": "uuid",
+                    "type": "string",
+                    "example": "00000000-0000-0000-0000-000000000000"
+                },
+                "rowVersion": {
+                    "format": "byte",
+                    "type": "string"
+                },
+                "text": {
+                    "type": "string"
+                },
+                "technicalContactSettings": {
+                    "$ref": "#/definitions/TechnicalContactModel"
+                },
+                "websiteDevelopersInfo": {
+                    "$ref": "#/definitions/WebsiteDevelopersModel"
+                },
+                "saleTypeInfo": {
+                    "$ref": "#/definitions/SaleTypeModel"
+                },
+                "website": {
+                    "$ref": "#/definitions/WebsiteModel"
+                }
+            }
+        },
+        "WebsiteModel": {
+            "required": ["siteUrl", "siteAudience", "bindedCity", "websiteRequiresRegistrationForTesting", "testUserLogin", "testUserPassword"],
+            "type": "object",
+            "properties": {
+                "siteUrl": {
+                    "type": "string"
+                },
+                "siteAudience": {
+                    "enum": ["Tourists", "Customers", "Subagents"],
+                    "type": "string"
+                },
+                "bindedCity": {
+                    "$ref": "#/definitions/CityModel"
+                },
+                "websiteRequiresRegistrationForTesting": {
+                    "type": "boolean"
+                },
+                "testUserLogin": {
+                    "type": "string"
+                },
+                "testUserPassword": {
+                    "type": "string"
+                }
+            }
+        },
+        "CityModel": {
+            "required": ["id", "iataCode", "name"],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "iataCode": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "MyFormState": {
+            "required": [
+                "configuredOfficePartnerFileId",
+                "configuredOfficeValidator",
+                "configuredOfficeAmadeusId",
+                "text",
+                "technicalContactSettings",
+                "websiteDevelopersInfo",
+                "saleTypeInfo",
+                "website",
+                "id",
+                "number",
+                "type",
+                "status",
+                "sentBy",
+                "sentAt",
+                "completedBy",
+                "completedAt",
+                "completionComment",
+                "createdBy",
+                "createdOn",
+                "rowVersion"
+            ],
+            "type": "object",
+            "properties": {
+                "text": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "testCases": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/TestCaseState"
+                    },
+                    "readOnly": true
+                },
+                "technicalContactSettings": {
+                    "$ref": "#/definitions/TechnicalContactState",
+                    "readOnly": true
+                },
+                "websiteDevelopersInfo": {
+                    "$ref": "#/definitions/WebsiteDevelopersState",
+                    "readOnly": true
+                },
+                "saleTypeInfo": {
+                    "$ref": "#/definitions/SaleTypeState",
+                    "readOnly": true
+                },
+                "website": {
+                    "$ref": "#/definitions/WebsiteState",
+                    "readOnly": true
+                },
+                "id": {
+                    "format": "uuid",
+                    "type": "string",
+                    "readOnly": true,
+                    "example": "00000000-0000-0000-0000-000000000000"
+                },
+                "number": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "type": {
+                    "enum": ["Type one", "Type one", "Type three"],
+                    "type": "string",
+                    "readOnly": true
+                },
+                "status": {
+                    "enum": [
+                        "NotSent",
+                        "Sending",
+                        "WorkflowInstanceRegistered",
+                        "InProgress",
+                        "Completed",
+                        "CancellationRequested",
+                        "CancelledByApplicant",
+                        "RejectedByCarrier"
+                    ],
+                    "type": "string",
+                    "readOnly": true
+                },
+                "sentBy": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "sentAt": {
+                    "format": "date-time",
+                    "type": "string",
+                    "readOnly": true
+                },
+                "completedBy": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "completedAt": {
+                    "format": "date-time",
+                    "type": "string",
+                    "readOnly": true
+                },
+                "completionComment": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "createdBy": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "createdOn": {
+                    "format": "date-time",
+                    "type": "string",
+                    "readOnly": true
+                },
+                "rowVersion": {
+                    "format": "byte",
+                    "type": "string"
+                }
+            }
+        },
+        "TechnicalContactState": {
+            "required": ["email", "firstName", "lastName", "middleName", "phone", "position", "sex"],
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "firstName": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "lastName": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "middleName": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "phone": {
+                    "$ref": "#/definitions/PhoneModel",
+                    "readOnly": true
+                },
+                "position": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "sex": {
+                    "enum": ["Male", "Female"],
+                    "type": "string",
+                    "readOnly": true
+                }
+            }
+        },
+        "WebsiteDevelopersState": {
+            "required": ["developersName", "developmentType"],
+            "type": "object",
+            "properties": {
+                "developersName": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "developmentType": {
+                    "enum": ["Own", "Outsourcing"],
+                    "type": "string",
+                    "readOnly": true
+                }
+            }
+        },
+        "SaleTypeState": {
+            "required": ["saleType", "subagentName", "subagentOwnershipForm", "subagentTin"],
+            "type": "object",
+            "properties": {
+                "saleType": {
+                    "enum": ["Own", "Subagent"],
+                    "type": "string",
+                    "readOnly": true
+                },
+                "subagentName": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "subagentOwnershipForm": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "subagentTin": {
+                    "type": "string",
+                    "readOnly": true
+                }
+            }
+        },
+        "WebsiteState": {
+            "required": ["siteUrl", "siteAudience", "bindedCity", "websiteRequiresRegistrationForTesting", "testUserLogin", "testUserPassword"],
+            "type": "object",
+            "properties": {
+                "siteUrl": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "siteAudience": {
+                    "enum": ["Tourists", "Customers", "Subagents"],
+                    "type": "string",
+                    "readOnly": true
+                },
+                "bindedCity": {
+                    "$ref": "#/definitions/CityModel",
+                    "readOnly": true
+                },
+                "websiteRequiresRegistrationForTesting": {
+                    "type": "boolean",
+                    "readOnly": true
+                },
+                "testUserLogin": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "testUserPassword": {
+                    "type": "string",
+                    "readOnly": true
+                }
+            }
+        }
+    }
+}

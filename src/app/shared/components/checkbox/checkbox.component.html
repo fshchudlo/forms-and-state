@@ -1,0 +1,9 @@
+<label class="form-check-control form-check-control-checkbox">
+  <input  #checkbox type="checkbox" class="form-check-input" (change)="changeCallback($event.target.checked)" [disabled]="isDisabled" hidden />
+  <span class="form-check-indicator"></span>
+  <div class="form-check-description">
+      <div *ngIf="iconClass !== null" class="form-check-description-icon" [ngClass]="iconClass"></div>
+      <ng-content></ng-content>
+  </div>
+  <ng-content select=".control-content"></ng-content>
+</label>

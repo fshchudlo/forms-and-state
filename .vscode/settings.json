@@ -1,0 +1,19 @@
+{
+    "files.exclude": {
+        "**/.awcache": true,
+        "**/dist": true,
+        "**/*.css": {
+            "when": "$(basename).scss"
+        },
+        "build/**/*": true
+    },
+    "search.exclude": {
+        "**/docs": true,
+        "**/coverage": true
+    },
+    "editor.detectIndentation": false,
+    "editor.tabSize": 4,
+    "editor.formatOnSave": false,
+    "html.format.wrapLineLength": 130,
+    "html.format.contentUnformatted": "pre,code,textarea,label",
+}

@@ -1,0 +1,40 @@
+<div class="container" *ngIf="(state$ | async) as state">
+    <div class="row">
+        <div class="col">
+            <form class="form" [formGroup]="form" autocomplete="off" (keydown.enter)="$event.preventDefault()">
+                <div class="form-title-primary">{{ 'request.basicInformation' | i18next }}</div>
+                <div class="form-section">
+                    <validation-error class="form-validation" [for]="form" *ngIf="form"></validation-error>
+                    <div class="row" formGroupName="website">
+                        <div class="col-md-6 col-lg">
+                            <div class="form-group">
+                                <label class="form-label">{{ 'request.linkedWebsiteURL' | i18next }}</label>
+                                <input appendValidationError noSpaces maxlength="128" class="form-control" formControlName="siteUrl" />
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg">
+                            <div class="form-group">
+                                <label class="form-label">{{ 'request.siteAudience' | i18next }}
+                                                    </label>
+                                <site-audience class="custom-control" appendValidationError formControlName="siteAudience"></site-audience>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg">
+                            <div class="form-group form-group-has-action">
+                                <label class="form-label">{{ 'request.cityOfTheSite' | i18next }}
+                                                    </label>
+                                <cities-dropdown class="custom-control" appendValidationError formControlName="bindedCity"></cities-dropdown>
+                            </div>
+                        </div>
+                    </div>
+                    <sale-type-info formGroupName="saleTypeInfo"></sale-type-info>
+                </div>
+            </form>
+            <div class="row">
+                <div class="col">
+                    <submit-request-button [form]="form"></submit-request-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

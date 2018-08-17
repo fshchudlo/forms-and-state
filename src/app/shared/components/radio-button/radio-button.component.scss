@@ -1,0 +1,137 @@
+@import '../../../../shared.scss';
+.form-check {
+    height: 44px;
+    align-items: center;
+    display: flex;
+    margin-bottom: 0.5rem;
+    position: relative;
+
+    &-control {
+        cursor: pointer;
+        display: inline-flex;
+        flex-direction: column;
+        font-weight: 400;
+        margin-bottom: 0;
+        margin-right: 16px;
+        min-height: 18px;
+        padding-left: 18px;
+        position: relative;
+
+        &-checkbox {
+            .form-check-indicator {
+                @include border-radius(0);
+            }
+
+            .form-check-input:checked ~ .form-check-indicator {
+                background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAMAAABhEH5lAAAAYFBMVEW40AC40AG60Qa60Qi70gnQ4FXQ4FbR4FjS4VzZ5nXb533b537b53/c6IDc6ILd6YXe6Yje6Yrf6ozg6o7g65Dh65Lh65Ti7Jbj7Jnj7Jrm76fr8rfr8rjs8rn+/vz////vkx12AAAATklEQVR4AbXIRQ6AMBQE0CnuUFygc/9bkiYI/H3f8sEdncppqMXUbMVU7HDxAlgle9zWw17BQT0Vmt1HxvEdIDJbzuk7QGy4/AdIZgUXTvWbAx8jWs6SAAAAAElFTkSuQmCC');
+                border: 1px solid $color-blue;
+                color: $color-white;
+            }
+        }
+
+        &-radio {
+            .form-check-indicator {
+                -webkit-background-size: 64%;
+                background-size: 64%;
+                @include border-radius(50%);
+            }
+
+            .form-check-input:checked ~ .form-check-indicator {
+                background-color: $color-white;
+                background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii02IC02IDEyIDEyIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSIiPjxjaXJjbGUgZmlsbD0iIzcwNzE3MCIgcj0iNiIvPjwvc3ZnPg==');
+            }
+        }
+    }
+
+    &-description {
+        font-size: $font-size-default;
+        margin-left: 10px;
+        max-width: 100%;
+
+        &-lg {
+            font-size: $font-size-xl;
+            margin-top: -3px;
+        }
+    }
+
+    &-input {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        opacity: 0;
+        padding: 0;
+        position: absolute;
+        z-index: -1;
+
+        &:checked ~ .form-check-indicator {
+            background-color: $color-white;
+        }
+
+        &:focus ~ .form-check-indicator {
+            -webkit-box-shadow: none;
+            box-shadow: none;
+        }
+
+        &:active ~ .form-check-indicator {
+            background-color: $color-white;
+            color: $color-white;
+        }
+
+        &:disabled ~ .form-check-description {
+            cursor: default;
+            @include opacity(0.65);
+        }
+
+        &:disabled ~ .form-check-indicator {
+            background-color: $color-white;
+            cursor: default;
+            @include opacity(0.65);
+        }
+    }
+
+    &-indicator {
+        background-color: $color-white;
+        background-position: center center;
+        background-repeat: no-repeat;
+        -webkit-background-size: contain;
+        background-size: contain;
+        border: 1px solid $color-border-muted;
+        display: block;
+        height: 18px;
+        left: 0;
+        margin: auto;
+        pointer-events: none;
+        position: absolute;
+        top: 0;
+        @include user-select(none);
+        width: 18px;
+
+        &-middle {
+            bottom: 0;
+        }
+    }
+
+    &-inline {
+        display: inline-flex;
+    }
+
+    &-has-popover {
+        .form-check-control {
+            margin-right: 0;
+        }
+    }
+
+    .form-error {
+        margin-left: 10px;
+    }
+
+    &-input.ng-dirty.ng-invalid {
+        & ~ .form-error {
+            display: block;
+        }
+
+        & ~ .form-check-indicator {
+            background-color: $color-light-grey;
+            border-color: $color-red;
+        }
+    }
+}

@@ -1,0 +1,5 @@
+<div class="sidebar-btn">
+    <div class="form-group">
+        <button class="btn btn-block btn-min-width" [disabled]="pending | async" (click)="validateAndSubmitRequest()" type="button">{{ buttonTitle | i18next }}</button>
+    </div>
+</div>

@@ -15,5 +15,5 @@
     "editor.tabSize": 4,
     "editor.formatOnSave": false,
     "html.format.wrapLineLength": 130,
-    "html.format.contentUnformatted": "pre,code,textarea,label",
+    "html.format.contentUnformatted": "pre,code,textarea,label,button,span",
 }

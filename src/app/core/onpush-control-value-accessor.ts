@@ -1,7 +1,8 @@
-import { ChangeDetectorRef } from '@angular/core';
-import { ControlValueAccessor } from '@angular/forms';
+import { ChangeDetectorRef } from "@angular/core";
+import { ControlValueAccessor } from "@angular/forms";
 
-export abstract class OnPushControlValueAccessor<TValue> implements ControlValueAccessor {
+export abstract class OnPushControlValueAccessor<TValue>
+    implements ControlValueAccessor {
     public value: TValue = undefined;
     public isDisabled: boolean = false;
     constructor(protected changeDetectorRef: ChangeDetectorRef) {}

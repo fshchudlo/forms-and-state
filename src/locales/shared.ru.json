@@ -4,26 +4,7 @@
     },
     "validation": {
         "maxlength": "Максимальная длина {{requiredLength}} символов",
-        "minlength": "Поле должно содержать минимум {{requiredLength}} символов",
-        "exactLength": "Поле должно содержать {{requiredLength}} символов",
-        "exactLengthDigits": "Поле должно содержать {{requiredLength}} цифр",
-        "onlyFromToDigits": "Поле должно содержать от {{min}} до {{max}} цифр",
-        "onlyDigitsAndCyrillic": "Поле должно содержать только цифры и кириллицу",
-        "onlyDigits": "Поле должно содержать только цифры",
-        "onlyCyrillicAndLatin": "Поле содержит недопустимые символы",
-        "onlyDigitsAndLatin": "Поле может содержать только латинские буквы и цифры",
-        "onlyFourDigitsAndLatinLetter": "Поле должно содержать 4 цифры и 1 латинскую букву",
-        "required": "Необходимо ввести значение",
-        "operatorPersonalNumber": "Первые 5 символов должны совпадать с кодом ТКП"
-    },
-    "ngSelect": {
-        "typeToSearchTextWithLength": "Пожалуйста, введите {{length}} символа",
-        "typeToSearchTextOneMoreSymbol": "Пожалуйста, введите еще один символ",
-        "addTagText": "Добавить элемент",
-        "clearAllText": "Очистить всё",
-        "loadingText": "Поиск...",
-        "notFoundText": "Ничего не найдено",
-        "placeholder": "",
-        "typeToSearchText": "Введите несколько символов для поиска"
+        "minlength": "Минимальная длина {{requiredLength}} символов",
+        "required": "Необходимо ввести значение"
     }
 }

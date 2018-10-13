@@ -1,4 +1,4 @@
-@import './shared.scss';
+@import "./shared.scss";
 
 body,
 html {
@@ -24,76 +24,12 @@ h6 {
     margin-bottom: 20px;
 }
 
-ul {
-    list-style: none;
-
-    &.bulleted {
-        li {
-            background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAZdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuMTJDBGvsAAAAEklEQVQYV2PwPfodjojiHP0OAERhIJH3C1fAAAAAAElFTkSuQmCC')
-                no-repeat left top;
-            background-repeat: no-repeat;
-            background-position-y: 8px;
-            padding-left: 10px;
-        }
-    }
-
-    &.agenda {
-        padding-left: 30px;
-
-        ul {
-            padding-left: 30px;
-        }
-
-        li {
-            padding-left: 0;
-        }
-        @media (max-width: 768px) {
-            padding-left: 15px;
-
-            li {
-                padding-top: 2px;
-            }
-
-            ul {
-                padding-left: 15px;
-            }
-        }
-    }
-}
-
 a {
     color: #147391;
 }
 
-code {
-    padding: 2px;
-}
-
-section {
-    margin-top: -60px;
-    padding-top: 60px;
-
-    &:target > h3,
-    &:target > h4 {
-        text-decoration: underline;
-    }
-}
-
-aside {
-    p {
-        vertical-align: middle;
-    }
-
-    padding: 15px;
-    margin: 20px 0 20px 25px;
-    border: 1px solid $color-muted-grey;
-    border-left-width: 5px;
-    border-left-color: $color-blue;
-    background-position: 10px center;
-    background-repeat: no-repeat;
-    @media (max-width: 768px) {
-        margin-left: 0;
-    }
+.hidden {
+    display: none !important;
 }
 
 .spinner {
@@ -106,7 +42,7 @@ aside {
         text-align: center;
         vertical-align: middle;
 
-        .spinner-wraper {
+        .spinner-wrapper {
             vertical-align: middle;
             width: 100px;
             height: 100px;
@@ -135,8 +71,19 @@ aside {
         .spinner-line {
             margin: 0 auto;
             background: $color-light-blue;
-            background: -webkit-radial-gradient(20% 20%, circle cover, $color-light-blue 0%, transparent 60%, transparent 100%);
-            background: radial-gradient(circle at 20% 20%, $color-light-blue 0%, transparent 60%, transparent 100%);
+            background: -webkit-radial-gradient(
+                    20% 20%,
+                    circle cover,
+                    $color-light-blue 0%,
+                    transparent 60%,
+                    transparent 100%
+            );
+            background: radial-gradient(
+                    circle at 20% 20%,
+                    $color-light-blue 0%,
+                    transparent 60%,
+                    transparent 100%
+            );
             border-radius: 110px;
             padding: 10px;
             position: absolute;
@@ -159,6 +106,7 @@ aside {
         }
     }
 }
+
 @-webkit-keyframes spinner-rotate {
     from {
         -webkit-transform: rotate(0deg);
@@ -171,6 +119,7 @@ aside {
         transform: rotate(360deg);
     }
 }
+
 @-moz-keyframes spinner-rotate {
     from {
         -webkit-transform: rotate(0deg);
@@ -183,6 +132,7 @@ aside {
         transform: rotate(360deg);
     }
 }
+
 @keyframes spinner-rotate {
     from {
         -webkit-transform: rotate(0deg);
@@ -195,8 +145,12 @@ aside {
         transform: rotate(360deg);
     }
 }
+
 .form {
     margin-bottom: 15px;
+    background-color: #fff;
+    padding: 20px 30px 10px;
+
     .form-label {
         color: $color-dark-grey;
         display: inline-block;
@@ -204,9 +158,10 @@ aside {
         font-weight: 500;
         margin-bottom: 0.3em;
         position: relative;
+
         &:after {
             background: #ffba1b;
-            content: '';
+            content: "";
             height: 4px;
             position: absolute;
             right: -8px;
@@ -215,42 +170,110 @@ aside {
             border-radius: 100%;
         }
     }
-    .form-title-primary {
+
+    .form-error {
+        color: $color-red;
+        font-size: 1rem;
+        line-height: 1;
+        margin-top: 2px;
+    }
+
+    &-title-primary,
+    &-title-secondary {
         font-size: 22px;
         font-weight: 600;
         line-height: 22px;
         margin-bottom: 20px;
     }
-    .form-section {
-        background-color: #fff;
+
+    &-title-secondary {
+        font-size: 20px;
+    }
+
+    &-section {
         display: block;
-        padding: 20px 30px 10px;
+        padding-bottom: 30px;
+
+        .form-section {
+            padding: 0 20px 10px;
+        }
     }
+
     .custom-control {
-        padding-left: 0px;
+        padding-left: 0;
     }
+
     .form-control,
     .custom-control {
         color: $color-black;
         @include border-radius(0);
-        @include box-shadow(0 0 3px 0 $color-gray);
-        border-color: $color-gray;
+
         &:focus,
         &:hover {
-            @include box-shadow(0 0 3px 0 $color-gray);
+            box-shadow: none;
             border-color: $color-light-blue;
         }
+
         &.ng-dirty.ng-invalid {
             background-color: #fdeded;
             border-color: #d22630;
             -webkit-box-shadow: none;
             box-shadow: none;
-            .ng-select-container {
-                background-color: #fdeded;
-                border-color: #d22630;
-                -webkit-box-shadow: none;
-                box-shadow: none;
-            }
         }
+    }
+
+    &-btn-second-sublevel {
+        padding-left: 20px;
+    }
+}
+
+.link {
+    cursor: pointer;
+    color: $color-blue;
+    display: inline-block;
+
+    &:hover {
+        color: $color-hover-blue;
+        text-decoration: underline;
+    }
+}
+
+.btn {
+    max-width: 320px;
+}
+
+.btn-outline-primary {
+    color: $color-blue;
+    border-color: $color-blue;
+    @include border-radius(0);
+
+    &:hover {
+        background-color: $color-hover-blue;
+        border-color: $color-hover-blue;
+    }
+
+    &:active {
+        box-shadow: none;
+        outline: none;
+        background-color: $color-btn-primary-active;
+        border-color: $color-btn-primary-active;
+    }
+
+    &:focus {
+        box-shadow: none;
+        outline: none;
+        color: $color-white;
+        background-color: $color-btn-primary-focus;
+        border-color: $color-btn-primary-focus;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .form {
+        padding: 20px 15px 0;
+    }
+
+    .btn {
+        max-width: 100%;
     }
 }

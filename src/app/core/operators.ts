@@ -1,5 +1,5 @@
-import { MonoTypeOperatorFunction, Observable, pipe } from 'rxjs';
-import { filter, first, pluck, switchMap } from 'rxjs/operators';
+import { MonoTypeOperatorFunction, Observable, pipe } from "rxjs";
+import { filter, first, pluck, switchMap } from "rxjs/operators";
 export const pluckIf = (...properties: string[]) =>
     pipe(
         pluck(...properties),
@@ -12,7 +12,10 @@ export const pluckIfNot = (...properties: string[]) =>
         filter(result => !result)
     );
 
-export function switchIfNotEmpty<T>(parameterName: string, action: (param: string) => Observable<T>): MonoTypeOperatorFunction<T> {
+export function switchIfNotEmpty<T>(
+    parameterName: string,
+    action: (param: string) => Observable<T>
+): MonoTypeOperatorFunction<T> {
     return pipe(
         pluckIf(parameterName),
         switchMap(action),
@@ -20,7 +23,10 @@ export function switchIfNotEmpty<T>(parameterName: string, action: (param: strin
     );
 }
 
-export function switchIfEmpty<T>(parameterName: string, action: () => Observable<T>): MonoTypeOperatorFunction<T> {
+export function switchIfEmpty<T>(
+    parameterName: string,
+    action: () => Observable<T>
+): MonoTypeOperatorFunction<T> {
     return pipe(
         pluckIfNot(parameterName),
         switchMap(action),

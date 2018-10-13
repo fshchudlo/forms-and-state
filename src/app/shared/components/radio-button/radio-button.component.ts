@@ -1,6 +1,12 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, Input } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { OnPushControlValueAccessor } from '@core';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    forwardRef,
+    Input
+} from "@angular/core";
+import { NG_VALUE_ACCESSOR } from "@angular/forms";
+import { OnPushControlValueAccessor } from "@core";
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -11,9 +17,9 @@ import { OnPushControlValueAccessor } from '@core';
             useExisting: forwardRef(() => RadioButtonComponent)
         }
     ],
-    selector: 'radio-button',
-    styleUrls: ['./radio-button.component.scss'],
-    templateUrl: 'radio-button.component.html'
+    selector: "radio-button",
+    styleUrls: ["./radio-button.component.scss"],
+    templateUrl: "radio-button.component.html"
 })
 export class RadioButtonComponent extends OnPushControlValueAccessor<string> {
     @Input()

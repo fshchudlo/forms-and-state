@@ -1,0 +1,36 @@
+{
+    "nestedItem": "Nested item",
+    "addNesteditem": "Add new item",
+    "removeItem": "Remove item",
+    "form": {
+        "basicInformation": "Basic information",
+        "status": "Current status",
+        "createdOn": "Created on",
+        "createdBy": "Created by",
+        "modifiedOn": "Modified on",
+        "modifiedBy": "Modified by",
+        "comment": "Comment",
+        "name": "Name",
+        "urgency": "Urgency",
+        "nestedItems": {
+            "name": "Item name"
+        }
+    },
+    "urgencyEnum": {
+        "low": "Low",
+        "normal": "Normal",
+        "high": "High"
+    },
+    "statuses": {
+        "NotSent": "Draft",
+        "Sending": "Sending",
+        "WorkflowInstanceRegistered": "New",
+        "InProgress": "In progress",
+        "Completed": "Done",
+        "CancellationRequested": "Cancellation requested",
+        "CancelledByApplicant": "Cancelled",
+        "Rejected": "Rejected"
+    },
+
+    "validation": {}
+}

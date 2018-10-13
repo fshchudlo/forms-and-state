@@ -1,0 +1,35 @@
+{
+    "nestedItem": "Вложенный элемент",
+    "removeItem": "Удалить элемент",
+    "addNesteditem": "Добавить элемент",
+    "form": {
+        "basicInformation": "Общая информация",
+        "status": "Текущий статус",
+        "createdOn": "Дата создания",
+        "createdBy": "Кем создан",
+        "modifiedOn": "Дата обновления",
+        "modifiedBy": "Кем обновлен",
+        "comment": "Комментарий",
+        "name": "Название",
+        "urgency": "Срочность",
+        "nestedItems": {
+            "name": "Название элемента"
+        }
+    },
+    "urgencyEnum": {
+        "low": "Низкая",
+        "normal": "Обычная",
+        "high": "Высокая"
+    },
+    "statuses": {
+        "NotSent": "Черновик",
+        "Sending": "Отправляется",
+        "WorkflowInstanceRegistered": "Новая",
+        "InProgress": "В работе",
+        "Completed": "Завершена",
+        "CancellationRequested": "Запрошено аннулирование",
+        "CancelledByApplicant": "Аннулирована",
+        "Rejected": "Отклонена"
+    },
+    "validation": {}
+}

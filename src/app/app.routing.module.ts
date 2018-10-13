@@ -1,20 +1,19 @@
-import { NgModule } from '@angular/core';
-import { NoPreloading, RouterModule, Routes } from '@angular/router';
-import { RoutingConfig } from '@routing.config';
-import { I18NEXT_NAMESPACE_RESOLVER } from 'angular-i18next';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { I18NEXT_NAMESPACE_RESOLVER } from "angular-i18next";
 
 const routes: Routes = [
     {
-        path: '',
-        pathMatch: RoutingConfig.PathMatch.Full,
-        redirectTo: RoutingConfig.MyForm.Base
+        path: "",
+        pathMatch: "full",
+        redirectTo: "some-entity"
     },
     {
         data: {
-            i18nextNamespaces: ['my-form']
+            i18nextNamespaces: ["some-entity"]
         },
-        loadChildren: './my-form/my-form.module#MyFormModule',
-        path: RoutingConfig.MyForm.Base,
+        loadChildren: "./some-entity/some-entity.module#SomeEntityModule",
+        path: "some-entity",
         resolve: {
             i18next: I18NEXT_NAMESPACE_RESOLVER
         }
@@ -25,8 +24,6 @@ const routes: Routes = [
     exports: [RouterModule],
     imports: [
         RouterModule.forRoot(routes, {
-            onSameUrlNavigation: 'reload',
-            preloadingStrategy: NoPreloading,
             useHash: false
         })
     ]

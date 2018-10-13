@@ -1,0 +1,26 @@
+<ng-container *ngFor="let itemForm of formArray.controls; let i = index;">
+    <div class="form-section">
+        <div class="row">
+            <div class="col">
+                <div class="form-title-secondary" *ngIf="formArray.controls.length > 0">{{ 'nestedItem' | i18next }}</div>
+            </div>
+            <div class="col-auto text-right" *ngIf="isEditable$ | async">
+                <span class="link mb-3" title="{{ 'removeItem' | i18next }}" (click)="removeNestedItem(i)">{{ 'removeItem' | i18next }}</span>
+            </div>
+        </div>
+        <div class="row" [formGroup]="itemForm">
+            <input formControlName="id" type="hidden" />
+            <div class="col">
+                <div class="form-group">
+                    <label>{{ 'form.nestedItems.name' | i18next }}</label>
+                    <input appendValidationError formControlName="name" maxlength="128" class="form-control" />
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+<div class="form-btn form-btn-second-sublevel" *ngIf="isEditable$ | async">
+    <span class="link link-active" (click)="addNestedItem()" title="{{ 'addNesteditem' | i18next }}">
+        <span>{{ 'addNesteditem' | i18next }}</span>
+    </span>
+</div>

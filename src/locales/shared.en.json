@@ -3,27 +3,8 @@
         "send": "Send"
     },
     "validation": {
-        "maxlength": "Maximum length of {{requiredLength}}",
-        "minlength": "The field must contain minimum {{requiredLength}} symbols",
-        "exactLength": "The field must contain {{requiredLength}} symbols",
-        "exactLengthDigits": "The field must contain {{requiredLength}} digits",
-        "onlyFromToDigits": "The field must contain from {{min}} to {{max}} digits",
-        "onlyDigitsAndCyrillic": "The field may only contain figures and Cyrillic letters",
-        "onlyDigits": "The field may only contain figures",
-        "onlyCyrillicAndLatin": "The field contains inadmissible symbols",
-        "onlyDigitsAndLatin": "The field may only contain figures and Latin letters",
-        "onlyFourDigitsAndLatinLetter": "The field must contain 4 figures and 1 Latin letter",
-        "required": "Enter a value",
-        "operatorPersonalNumber": "The first 5 symbols must be the same as the TCH code"
-    },
-    "ngSelect": {
-        "typeToSearchTextWithLength": "Please enter {{length}} or more characters",
-        "typeToSearchTextOneMoreSymbol": "Please enter one more character",
-        "addTagText": "Add item",
-        "clearAllText": "Clear all",
-        "loadingText": "Loading...",
-        "notFoundText": "No items found",
-        "placeholder": "",
-        "typeToSearchText": "Type to search"
+        "maxlength": "Maximum length is {{requiredLength}}",
+        "ьштlength": "Minimum length is {{requiredLength}}",
+        "required": "Field is required"
     }
 }

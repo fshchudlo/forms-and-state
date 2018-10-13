@@ -1,6 +1,14 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, Input, Renderer2, ViewChild } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { OnPushControlValueAccessor } from '@core';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    forwardRef,
+    Input,
+    Renderer2,
+    ViewChild
+} from "@angular/core";
+import { NG_VALUE_ACCESSOR } from "@angular/forms";
+import { OnPushControlValueAccessor } from "@core";
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -12,19 +20,26 @@ import { OnPushControlValueAccessor } from '@core';
         }
     ],
     // tslint:disable-next-line:component-selector
-    selector: 'checkbox',
-    templateUrl: 'checkbox.component.html'
+    selector: "checkbox",
+    templateUrl: "checkbox.component.html"
 })
 export class CheckboxComponent extends OnPushControlValueAccessor<boolean> {
     @Input()
     public iconClass: string = null;
-    @ViewChild('checkbox')
+    @ViewChild("checkbox")
     private checkboxElem: any;
-    constructor(private renderer: Renderer2, changeDetectorRef: ChangeDetectorRef) {
+    constructor(
+        private renderer: Renderer2,
+        changeDetectorRef: ChangeDetectorRef
+    ) {
         super(changeDetectorRef);
     }
     public writeValue(value: boolean): void {
-        this.renderer.setProperty(this.checkboxElem.nativeElement, 'checked', value);
+        this.renderer.setProperty(
+            this.checkboxElem.nativeElement,
+            "checked",
+            value
+        );
         super.writeValue(value);
     }
 }

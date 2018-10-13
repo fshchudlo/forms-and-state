@@ -1,4 +1,4 @@
-@import '../../../../shared.scss';
+@import "../../../../shared.scss";
 .form-check {
     height: 44px;
     align-items: center;
@@ -23,7 +23,7 @@
             }
 
             .form-check-input:checked ~ .form-check-indicator {
-                background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAMAAABhEH5lAAAAYFBMVEW40AC40AG60Qa60Qi70gnQ4FXQ4FbR4FjS4VzZ5nXb533b537b53/c6IDc6ILd6YXe6Yje6Yrf6ozg6o7g65Dh65Lh65Ti7Jbj7Jnj7Jrm76fr8rfr8rjs8rn+/vz////vkx12AAAATklEQVR4AbXIRQ6AMBQE0CnuUFygc/9bkiYI/H3f8sEdncppqMXUbMVU7HDxAlgle9zWw17BQT0Vmt1HxvEdIDJbzuk7QGy4/AdIZgUXTvWbAx8jWs6SAAAAAElFTkSuQmCC');
+                background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAMAAABhEH5lAAAAYFBMVEW40AC40AG60Qa60Qi70gnQ4FXQ4FbR4FjS4VzZ5nXb533b537b53/c6IDc6ILd6YXe6Yje6Yrf6ozg6o7g65Dh65Lh65Ti7Jbj7Jnj7Jrm76fr8rfr8rjs8rn+/vz////vkx12AAAATklEQVR4AbXIRQ6AMBQE0CnuUFygc/9bkiYI/H3f8sEdncppqMXUbMVU7HDxAlgle9zWw17BQT0Vmt1HxvEdIDJbzuk7QGy4/AdIZgUXTvWbAx8jWs6SAAAAAElFTkSuQmCC");
                 border: 1px solid $color-blue;
                 color: $color-white;
             }
@@ -38,7 +38,7 @@
 
             .form-check-input:checked ~ .form-check-indicator {
                 background-color: $color-white;
-                background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii02IC02IDEyIDEyIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSIiPjxjaXJjbGUgZmlsbD0iIzcwNzE3MCIgcj0iNiIvPjwvc3ZnPg==');
+                background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii02IC02IDEyIDEyIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSIiPjxjaXJjbGUgZmlsbD0iIzcwNzE3MCIgcj0iNiIvPjwvc3ZnPg==");
             }
         }
     }

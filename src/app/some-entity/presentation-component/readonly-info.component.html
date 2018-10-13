@@ -1,0 +1,28 @@
+<div class="form-section" *ngIf="traits.displayGenericInfo">
+    <div class="form-group row">
+        <div class="col">
+            <label>{{ 'form.createdBy' | i18next }}</label>
+            <input class="form-control-plaintext" [value]="state.createdBy">
+        </div>
+        <div class="col">
+            <label>{{ 'form.createdOn' | i18next }}</label>
+            <input class="form-control-plaintext" [value]="state.createdOn">
+        </div>
+    </div>
+    <div class="form-group row" *ngIf="traits.displayModifiedInfo">
+        <div class="col">
+            <label>{{ 'form.modifiedBy' | i18next }}</label>
+            <input class="form-control-plaintext" [value]="state.modifiedBy">
+        </div>
+        <div class="col">
+            <label>{{ 'form.modifiedOn' | i18next }}</label>
+            <input class="form-control-plaintext" [value]="state.modifiedOn">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col">
+            <label>{{ 'form.status' | i18next }}</label>
+            <input class="form-control-plaintext" [value]="'statuses.'+state.status | i18next">
+        </div>
+    </div>
+</div>

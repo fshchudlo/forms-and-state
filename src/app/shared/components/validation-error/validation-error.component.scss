@@ -1,17 +1,6 @@
-@import '../../../../shared.scss';
 validation-error {
     display: none;
     width: 100%;
-}
-
-validation-error.display-always {
-    display: block;
-    & > .form-error {
-        display: block;
-        &:last-child {
-            margin-bottom: 1rem;
-        }
-    }
 }
 
 .ng-dirty.ng-invalid {
@@ -33,45 +22,5 @@ form.ng-dirty.ng-invalid {
                 margin-bottom: 1rem;
             }
         }
-    }
-}
-
-/* Input group validation
-/*----------------------------*/
-.input-group {
-    validation-error.input-group-error-first,
-    validation-error.input-group-error-last {
-        & > .form-error {
-            display: none;
-        }
-    }
-
-    .input-group-first.ng-dirty.ng-invalid {
-        & ~ .input-group-error-first {
-            & > .form-error {
-                display: block;
-            }
-        }
-    }
-
-    .input-group-last.ng-dirty.ng-invalid {
-        & ~ .input-group-error-last {
-            & > .form-error {
-                display: block;
-            }
-        }
-    }
-}
-.form-error {
-    color: $color-red;
-    display: none;
-    font-size: $font-size-default;
-    line-height: 1;
-    margin-top: 2px;
-
-    /* Модификартор
-    Для показа блока с ошибкой */
-    &-visible {
-        display: block;
     }
 }

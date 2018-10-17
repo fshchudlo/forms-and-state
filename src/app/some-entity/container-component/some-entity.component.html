@@ -3,46 +3,39 @@
         <div class="col">
             <form class="form" [formGroup]="form" autocomplete="off" (keydown.enter)="$event.preventDefault()">
                 <div class="form-title-primary">{{ 'form.basicInformation' | i18next }}</div>
-                <div class="form-section">
-                    <validation-error class="form-validation" [for]="form"></validation-error>
+                <div class="form-section" [class.hidden]="serverValidation.validationMessages.length === 0">
+                    <validation-error class="form-validation" [for]="form" #serverValidation></validation-error>
                 </div>
                 <readonly-info [state]="state"></readonly-info>
 
                 <div class="form-section">
-                    <div class="form-group">
-                        <label>{{ 'form.name' | i18next }}</label>
-                        <input class="form-control" formControlName="name" appendValidationError>
-                    </div>
+                    <label>{{ 'form.name' | i18next }}</label>
+                    <input class="form-control" formControlName="name" appendValidationError>
                 </div>
                 <div class="form-section">
-                    <div class="form-group">
-                        <label>{{ 'form.urgency' | i18next }}</label>
-                        <div>
-                            <radio-button name="urgency" class="mr-3" formControlName="urgency" checkedValue="Low">
-                                {{ 'urgencyEnum.low' | i18next }}
-                            </radio-button>
-                            <radio-button name="urgency" class="mr-3" formControlName="urgency" checkedValue="Normal">
-                                {{ 'urgencyEnum.normal' | i18next }}
-                            </radio-button>
-                            <radio-button name="urgency" class="mr-3" formControlName="urgency" checkedValue="High">
-                                {{ 'urgencyEnum.high' | i18next }}
-                            </radio-button>
-                        </div>
+                    <label>{{ 'form.urgency' | i18next }}</label>
+                    <div>
+                        <radio-button name="urgency" class="mr-3" formControlName="urgency" checkedValue="Low">
+                            {{ 'urgencyEnum.low' | i18next }}
+                        </radio-button>
+                        <radio-button name="urgency" class="mr-3" formControlName="urgency" checkedValue="Normal">
+                            {{ 'urgencyEnum.normal' | i18next }}
+                        </radio-button>
+                        <radio-button name="urgency" class="mr-3" formControlName="urgency" checkedValue="High">
+                            {{ 'urgencyEnum.high' | i18next }}
+                        </radio-button>
                     </div>
                 </div>
-
 
                 <div class="form-section">
                     <nested-items [state]="state.nestedItems" formArrayName="nestedItems"></nested-items>
                 </div>
                 <div class="form-section">
-                    <div class="form-group">
-                        <label>{{ 'form.comment' | i18next }}</label>
-                        <textarea appendValidationError formControlName="comment" maxlength="4000" class="form-control" rows="8"></textarea>
-                    </div>
+                    <label>{{ 'form.comment' | i18next }}</label>
+                    <textarea appendValidationError formControlName="comment" maxlength="4000" class="form-control" rows="8"></textarea>
                 </div>
                 <div class="form-section">
-                    <submit-button [form]="form"></submit-button>
+                    <submit-button [form]="form" class="d-flex justify-content-center"></submit-button>
                 </div>
             </form>
         </div>

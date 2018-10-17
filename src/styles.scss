@@ -28,6 +28,10 @@ a {
     color: #147391;
 }
 
+.hidden {
+    display: none !important;
+}
+
 .spinner {
     display: table;
     width: 100%;
@@ -38,7 +42,7 @@ a {
         text-align: center;
         vertical-align: middle;
 
-        .spinner-wraper {
+        .spinner-wrapper {
             vertical-align: middle;
             width: 100px;
             height: 100px;
@@ -68,17 +72,17 @@ a {
             margin: 0 auto;
             background: $color-light-blue;
             background: -webkit-radial-gradient(
-                20% 20%,
-                circle cover,
-                $color-light-blue 0%,
-                transparent 60%,
-                transparent 100%
+                    20% 20%,
+                    circle cover,
+                    $color-light-blue 0%,
+                    transparent 60%,
+                    transparent 100%
             );
             background: radial-gradient(
-                circle at 20% 20%,
-                $color-light-blue 0%,
-                transparent 60%,
-                transparent 100%
+                    circle at 20% 20%,
+                    $color-light-blue 0%,
+                    transparent 60%,
+                    transparent 100%
             );
             border-radius: 110px;
             padding: 10px;
@@ -102,6 +106,7 @@ a {
         }
     }
 }
+
 @-webkit-keyframes spinner-rotate {
     from {
         -webkit-transform: rotate(0deg);
@@ -114,6 +119,7 @@ a {
         transform: rotate(360deg);
     }
 }
+
 @-moz-keyframes spinner-rotate {
     from {
         -webkit-transform: rotate(0deg);
@@ -126,6 +132,7 @@ a {
         transform: rotate(360deg);
     }
 }
+
 @keyframes spinner-rotate {
     from {
         -webkit-transform: rotate(0deg);
@@ -138,8 +145,12 @@ a {
         transform: rotate(360deg);
     }
 }
+
 .form {
     margin-bottom: 15px;
+    background-color: #fff;
+    padding: 20px 30px 10px;
+
     .form-label {
         color: $color-dark-grey;
         display: inline-block;
@@ -147,6 +158,7 @@ a {
         font-weight: 500;
         margin-bottom: 0.3em;
         position: relative;
+
         &:after {
             background: #ffba1b;
             content: "";
@@ -158,36 +170,110 @@ a {
             border-radius: 100%;
         }
     }
-    .form-title-primary {
+
+    .form-error {
+        color: $color-red;
+        font-size: 1rem;
+        line-height: 1;
+        margin-top: 2px;
+    }
+
+    &-title-primary,
+    &-title-secondary {
         font-size: 22px;
         font-weight: 600;
         line-height: 22px;
         margin-bottom: 20px;
     }
-    .form-section {
-        background-color: #fff;
+
+    &-title-secondary {
+        font-size: 20px;
+    }
+
+    &-section {
         display: block;
-        padding: 20px 30px 10px;
+        padding-bottom: 30px;
+
+        .form-section {
+            padding: 0 20px 10px;
+        }
     }
+
     .custom-control {
-        padding-left: 0px;
+        padding-left: 0;
     }
+
     .form-control,
     .custom-control {
         color: $color-black;
         @include border-radius(0);
-        @include box-shadow(0 0 3px 0 $color-gray);
-        border-color: $color-gray;
+
         &:focus,
         &:hover {
-            @include box-shadow(0 0 3px 0 $color-gray);
+            box-shadow: none;
             border-color: $color-light-blue;
         }
+
         &.ng-dirty.ng-invalid {
             background-color: #fdeded;
             border-color: #d22630;
             -webkit-box-shadow: none;
             box-shadow: none;
         }
+    }
+
+    &-btn-second-sublevel {
+        padding-left: 20px;
+    }
+}
+
+.link {
+    cursor: pointer;
+    color: $color-blue;
+    display: inline-block;
+
+    &:hover {
+        color: $color-hover-blue;
+        text-decoration: underline;
+    }
+}
+
+.btn {
+    max-width: 320px;
+}
+
+.btn-outline-primary {
+    color: $color-blue;
+    border-color: $color-blue;
+    @include border-radius(0);
+
+    &:hover {
+        background-color: $color-hover-blue;
+        border-color: $color-hover-blue;
+    }
+
+    &:active {
+        box-shadow: none;
+        outline: none;
+        background-color: $color-btn-primary-active;
+        border-color: $color-btn-primary-active;
+    }
+
+    &:focus {
+        box-shadow: none;
+        outline: none;
+        color: $color-white;
+        background-color: $color-btn-primary-focus;
+        border-color: $color-btn-primary-focus;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .form {
+        padding: 20px 15px 0;
+    }
+
+    .btn {
+        max-width: 100%;
     }
 }

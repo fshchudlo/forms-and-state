@@ -1,3 +1,1 @@
-<div class="form-group">
-    <button class="btn btn-block btn-outline-dark" [disabled]="pending | async" (click)="validateAndSubmitRequest()" type="button">{{ 'shared:buttons.send' | i18next }}</button>
-</div>
+<button class="btn btn-block btn-outline-primary" [disabled]="pending | async" (click)="validateAndSubmitRequest()" type="button">{{ 'shared:buttons.send' | i18next }}</button>

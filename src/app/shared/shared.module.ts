@@ -5,11 +5,13 @@ import { RadioButtonComponent } from "@shared/components/radio-button/radio-butt
 import { AppendValidationErrorDirective } from "@shared/components/validation-error/append-validation-error.directive";
 import { ValidationErrorComponent } from "@shared/components/validation-error/validation-error.component";
 import { I18NextModule } from "angular-i18next";
+import { MarkFormAsSubmittedDirective } from "./directives/mark-form-as-submitted.directive";
 
 @NgModule({
     declarations: [
         ValidationErrorComponent,
         RadioButtonComponent,
+        MarkFormAsSubmittedDirective,
         AppendValidationErrorDirective
     ],
     entryComponents: [ValidationErrorComponent],
@@ -20,6 +22,7 @@ import { I18NextModule } from "angular-i18next";
         I18NextModule,
         ValidationErrorComponent,
         AppendValidationErrorDirective,
+        MarkFormAsSubmittedDirective,
         RadioButtonComponent
     ],
     imports: [CommonModule, FormsModule, ReactiveFormsModule, I18NextModule]

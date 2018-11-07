@@ -3,11 +3,13 @@ validation-error {
     width: 100%;
 }
 
-.ng-dirty.ng-invalid {
-    & ~ validation-error {
-        display: block;
-        & > .form-error {
+.form.ng-attempted-to-submit {
+    .ng-invalid {
+        & ~ validation-error {
             display: block;
+            & > .form-error {
+                display: block;
+            }
         }
     }
 }

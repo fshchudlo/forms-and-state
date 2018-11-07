@@ -41,8 +41,9 @@ export class SubmitButtonComponent {
     public validateAndSubmitRequest(): void {
         this.pending.next(true);
         // Mark entire form as dirty to force validation messages displaying
-        this.form.markEntireFormAsDirty();
-        this.form.updateEntireFormValueAndValidity();
+        // this.form.updateEntireFormValueAndValidity();
+        this.form.updateValueAndValidity();
+        this.form.markAsAttemptedToSubmit();
 
         // Wait for async form validators if any
         this.form.statusChanges

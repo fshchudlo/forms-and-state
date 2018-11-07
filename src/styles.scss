@@ -199,12 +199,7 @@ a {
         }
     }
 
-    .custom-control {
-        padding-left: 0;
-    }
-
-    .form-control,
-    .custom-control {
+    .form-control {
         color: $color-black;
         @include border-radius(0);
 
@@ -224,6 +219,16 @@ a {
 
     &-btn-second-sublevel {
         padding-left: 20px;
+    }
+}
+.form.ng-attempted-to-submit {
+    .form-control {
+        &.ng-invalid {
+            background-color: #fdeded;
+            border-color: #d22630;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+        }
     }
 }
 

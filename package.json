@@ -18,7 +18,7 @@
     "ng": "ng",
     "build": "npm run generate-types && ng lint && ng build",
     "build:prod": "ng lint && ng build --configuration production",
-    "watch": "npm run generate-types && ng lint && ng serve --c production",
+    "watch": "npm run generate-types && ng lint && ng serve",
     "lint": "ng lint"
   },
   "dependencies": {

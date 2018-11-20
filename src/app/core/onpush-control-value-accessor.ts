@@ -15,8 +15,8 @@ export abstract class OnPushControlValueAccessor<TValue>
 
     public writeValue(value: TValue): void {
         this.value = value;
-        // С writeValue событие не сработает, поскольку значение выставляется через setTimeout. Поэтому явно помечаем контрол для проверки
-        // https://github.com/angular/angular/issues/10816
+        // writeValue is not working properly with OnPush, so we use changeDetectorRef
+        // see deatils here https://github.com/angular/angular/issues/10816
         this.changeDetectorRef.markForCheck();
     }
     public registerOnChange(fn: any): void {

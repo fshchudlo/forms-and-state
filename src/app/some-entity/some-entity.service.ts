@@ -40,6 +40,7 @@ export class SomeEntityService {
             modifiedBy: null,
             modifiedOn: null,
             status: "InProgress",
+            urgency: "High",
             nestedItems: [
                 {
                     id: "123",

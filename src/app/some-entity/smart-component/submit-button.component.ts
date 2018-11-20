@@ -6,7 +6,7 @@ import {
     Input,
     Output
 } from "@angular/core";
-import { ServerValidationHelper, TypedFormGroup } from "@core";
+import { TypedFormGroup } from "@core";
 import { EMPTY, Observable, Subject } from "rxjs";
 import { catchError, skipWhile, startWith, take } from "rxjs/operators";
 import { SomeEntityService } from "../some-entity.service";
@@ -79,7 +79,7 @@ export class SubmitButtonComponent {
     }
 
     private handleSubmitFailure(error: HttpErrorResponse): Observable<any> {
-        ServerValidationHelper.parseValidationErrorOrThrow(error, this.form);
+        this.form.applyServerErrorsOrThrow(error);
         scrollToFirstInvalidControl();
         return EMPTY;
     }

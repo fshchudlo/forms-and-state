@@ -10,11 +10,14 @@ import {
     Type,
     ViewContainerRef
 } from "@angular/core";
-import { FormControlName, FormGroupName } from "@angular/forms";
+import {
+    AbstractControl,
+    FormControlDirective,
+    FormControlName,
+    FormGroupDirective,
+    FormGroupName
+} from "@angular/forms";
 import { ValidationErrorComponent } from "./validation-error.component";
-// Директива, добавляющая сразу за элементом, на который она навешана, компонент validation-error.
-// Позволяет слегка сэкономить на верстке и снизить вероятность ошибок с копипастом имен полей
-
 @Directive({
     // tslint:disable-next-line:directive-selector
     selector: "[appendValidationError]"
@@ -24,7 +27,7 @@ export class AppendValidationErrorDirective
     private validationErrorComponent: ComponentRef<
         ValidationErrorComponent
     > = null;
-    private lastControl: any;
+    private lastControl: AbstractControl;
 
     constructor(
         private viewContainer: ViewContainerRef,
@@ -32,14 +35,14 @@ export class AppendValidationErrorDirective
         @Inject(ValidationErrorComponent)
         private vmComp: Type<ValidationErrorComponent>,
         @Optional() private formControlName: FormControlName,
-        @Optional() private formGroupName: FormGroupName
+        @Optional() private formControlDirective: FormControlDirective,
+        @Optional() private formGroupName: FormGroupName,
+        @Optional() private formGroupDirective: FormGroupDirective
     ) {}
     public ngDoCheck(): void {
-        // На жесткий случай, когда пересоздается форма и теперь контрол уже привязан к другому FormControl, пересоздаем все.
+        // На случай, когда пересоздается форма и теперь контрол уже привязан к другому FormControl, пересоздаем все.
         if (this.lastControl) {
-            const control = this.formControlName
-                ? this.formControlName.control
-                : this.formGroupName.control;
+            const control = this.getControl();
             if (this.lastControl !== control) {
                 this.validationErrorComponent.instance.for = this.lastControl = control;
                 this.validationErrorComponent.instance.bindControlListener();
@@ -48,9 +51,7 @@ export class AppendValidationErrorDirective
         }
     }
     public ngAfterViewInit(): void {
-        this.lastControl = this.formControlName
-            ? this.formControlName.control
-            : this.formGroupName.control;
+        this.lastControl = this.getControl();
         const factory = this.componentFactoryResolver.resolveComponentFactory(
             this.vmComp
         );
@@ -70,5 +71,20 @@ export class AppendValidationErrorDirective
         if (this.validationErrorComponent) {
             this.validationErrorComponent.changeDetectorRef.detach();
         }
+    }
+    private getControl(): AbstractControl | null {
+        if (this.formControlName) {
+            return this.formControlName.control;
+        }
+        if (this.formControlDirective) {
+            return this.formControlDirective.control;
+        }
+        if (this.formGroupName) {
+            return this.formGroupName.control;
+        }
+        if (this.formGroupDirective) {
+            return this.formGroupDirective.control;
+        }
+        return null;
     }
 }

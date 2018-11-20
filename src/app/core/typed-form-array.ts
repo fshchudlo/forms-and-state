@@ -5,10 +5,11 @@ import {
     ValidatorFn
 } from "@angular/forms";
 import { TypedFormGroup } from "@core";
+import { Observable } from "rxjs";
 
 export class TypedFormArray<T> extends FormArray {
     public readonly value: T;
-
+    public valueChanges: Observable<T>;
     constructor(
         controls: Array<TypedFormGroup<T>>,
         validatorOrOpts?:
@@ -25,8 +26,14 @@ export class TypedFormArray<T> extends FormArray {
         return super.getRawValue();
     }
 
-    public setValue(value: T[]): void {
-        super.setValue(value);
+    public setValue(
+        value: T[],
+        options?: {
+            onlySelf?: boolean;
+            emitEvent?: boolean;
+        }
+    ): void {
+        super.setValue(value, options);
     }
 
     public removeAt(index: number): void {

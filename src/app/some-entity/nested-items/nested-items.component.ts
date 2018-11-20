@@ -4,7 +4,6 @@ import {
     Input,
     OnInit
 } from "@angular/core";
-import { FormArrayName } from "@angular/forms";
 import { TypedFormArray } from "@core";
 import { Observable } from "rxjs";
 import { distinctUntilChanged, map, startWith } from "rxjs/operators";
@@ -18,13 +17,9 @@ import { NestedItemFormGroup } from "./nested-item.form-group";
 export class NestedItemsComponent implements OnInit {
     @Input()
     public state: Backend.NestedItemState;
+    @Input()
+    public formArray: TypedFormArray<Backend.NestedItemModel>;
     public isEditable$: Observable<boolean>;
-    public get formArray(): TypedFormArray<Backend.NestedItemModel> {
-        return this.formArrayName.control as TypedFormArray<
-            Backend.NestedItemModel
-        >;
-    }
-    constructor(public formArrayName: FormArrayName) {}
     public ngOnInit(): void {
         this.isEditable$ = this.formArray.statusChanges.pipe(
             startWith(this.formArray.disabled),

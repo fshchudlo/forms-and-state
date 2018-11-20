@@ -3,8 +3,8 @@
         <div class="col">
             <form class="form" [formGroup]="form" autocomplete="off" (keydown.enter)="$event.preventDefault()">
                 <div class="form-title-primary">{{ 'form.basicInformation' | i18next }}</div>
-                <div class="form-section" [class.hidden]="serverValidation.validationMessages.length === 0">
-                    <validation-error class="form-validation" [for]="form" #serverValidation></validation-error>
+                <div class="form-section" [class.hidden]="!form.errors">
+                    <validation-error class="form-validation" [for]="form"></validation-error>
                 </div>
                 <readonly-info [state]="state"></readonly-info>
 
@@ -28,7 +28,7 @@
                 </div>
 
                 <div class="form-section">
-                    <nested-items [state]="state.nestedItems" formArrayName="nestedItems"></nested-items>
+                    <nested-items [state]="state.nestedItems" [formArray]="form.nestedItems"></nested-items>
                 </div>
                 <div class="form-section">
                     <label>{{ 'form.comment' | i18next }}</label>

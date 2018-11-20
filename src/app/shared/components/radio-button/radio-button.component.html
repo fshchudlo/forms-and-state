@@ -1,7 +1,7 @@
 <div class="form-check-inline">
     <label class="form-check-control form-check-control-radio">
-        <input type="radio" class="form-check-input" (change)="changeCallback($event.target.value)" [name]="name" [value]="checkedValue"
-            [disabled]="isDisabled" [checked]="checked" hidden>
+        <input type="radio" class="form-check-input" (change)="valueChanged($event.target.value)" [name]="name" [value]="checkedValue"
+            [disabled]="isDisabled" [checked]="checked | async" hidden>
         <span class="form-check-indicator form-check-indicator-top"></span>
         <div class="form-check-description">
             <ng-content></ng-content>

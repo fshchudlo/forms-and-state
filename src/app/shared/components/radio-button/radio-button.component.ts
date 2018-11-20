@@ -7,6 +7,7 @@ import {
 } from "@angular/core";
 import { NG_VALUE_ACCESSOR } from "@angular/forms";
 import { OnPushControlValueAccessor } from "@core";
+import { BehaviorSubject } from "rxjs";
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -26,12 +27,16 @@ export class RadioButtonComponent extends OnPushControlValueAccessor<string> {
     public name: string;
     @Input()
     public checkedValue: string;
-    public checked: boolean = false;
+    public checked: BehaviorSubject<boolean> = new BehaviorSubject(false);
     constructor(changeDetectorRef: ChangeDetectorRef) {
         super(changeDetectorRef);
     }
+    public valueChanged(value: string): void {
+        this.checked.next(this.checkedValue === value);
+        this.changeCallback(value);
+    }
     public writeValue(value: string): void {
-        this.checked = this.checkedValue === value;
+        this.checked.next(this.checkedValue === value);
         super.writeValue(value);
     }
 }

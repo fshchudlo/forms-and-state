@@ -1,6 +1,5 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     Inject,
     Input,
@@ -11,7 +10,7 @@ import {
 } from "@angular/core";
 import { AbstractControl, FormArray, FormGroup } from "@angular/forms";
 import { I18NEXT_NAMESPACE, I18NextService } from "angular-i18next";
-import { Subscription } from "rxjs";
+import { BehaviorSubject, Subscription } from "rxjs";
 import { startWith } from "rxjs/operators";
 
 @Component({
@@ -22,7 +21,7 @@ import { startWith } from "rxjs/operators";
     selector: "validation-error",
     styleUrls: ["validation-error.component.scss"],
     template: `
-    <ng-template ngFor let-error [ngForOf]="validationMessages">
+    <ng-template ngFor let-error [ngForOf]="validationMessages$ | async">
         <div class="form-error" [innerHTML]="error"></div>
     </ng-template>
   `
@@ -30,14 +29,15 @@ import { startWith } from "rxjs/operators";
 export class ValidationErrorComponent implements OnChanges, OnDestroy {
     @Input()
     public for: AbstractControl = null;
-    public validationMessages: string[] = [];
+    public validationMessages$: BehaviorSubject<string[]> = new BehaviorSubject(
+        []
+    );
     private statusSubscription: Subscription;
     private formControlPath: string;
 
     constructor(
         @Inject(I18NEXT_NAMESPACE) private i18nextNamespace: string,
-        private i18next: I18NextService,
-        private changeDetectorRef: ChangeDetectorRef
+        private i18next: I18NextService
     ) {}
 
     public ngOnDestroy(): void {
@@ -63,23 +63,27 @@ export class ValidationErrorComponent implements OnChanges, OnDestroy {
         }
     }
     private buildValidationMessages(): void {
-        this.validationMessages = [];
+        const result: string[] = [];
         if (
             this.for == null ||
             this.for.status !== "INVALID" ||
             this.for.errors == null
         ) {
-            this.changeDetectorRef.markForCheck();
+            this.validationMessages$.next([]);
             return;
         }
         const errorsArray: any = this.for.errors;
         for (const key of Object.keys(this.for.errors)) {
-            this.appendValidationMessagesFor(errorsArray, key);
+            this.appendValidationMessagesFor(errorsArray, key, result);
         }
-        this.changeDetectorRef.markForCheck();
+        this.validationMessages$.next(result);
     }
 
-    private appendValidationMessagesFor(errorsArray: any, key: string): void {
+    private appendValidationMessagesFor(
+        errorsArray: any,
+        key: string,
+        appendTo: string[]
+    ): void {
         const value = errorsArray[key];
         let params = null;
         if (value instanceof Object) {
@@ -91,14 +95,12 @@ export class ValidationErrorComponent implements OnChanges, OnDestroy {
         if (key === "serverErrors") {
             // С сервера может прийти множество сообщений под одним ключом. Разделяем их
             (Array.isArray(params) ? params : [params]).forEach(message => {
-                this.validationMessages.push(
-                    this.getLocalizedValidationMessage(key, message)
-                );
+                appendTo.push(this.getLocalizedValidationMessage(key, message));
             });
         } else {
             this.formControlPath =
                 this.formControlPath || getFormControlPath(this.for);
-            this.validationMessages.push(
+            appendTo.push(
                 this.getLocalizedValidationMessage(
                     key,
                     params,
